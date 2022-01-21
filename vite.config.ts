@@ -13,6 +13,15 @@ export default defineConfig({
     },
     rollupOptions: {
       external: ['axios'],
+      output: {
+        assetFileNames: info => {
+          if (info.name === 'style.css') {
+            return 'draken-sdk.css'
+          } else {
+            return info.name
+          }
+        },
+      },
     },
   },
 })

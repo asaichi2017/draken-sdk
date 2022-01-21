@@ -11,12 +11,12 @@
       "import": "./dist/draken-sdk.es.js",
       "require": "./dist/draken-sdk.umd.js"
     },
-    "./dist/style.css": "./dist/style.css"
+    "./dist/draken-sdk.css": "./dist/draken-sdk.css"
   },
   "main": "./dist/draken-sdk.umd.js",
   "module": "./dist/draken-sdk.es.js",
   "types": "./dist/types/sdk.d.ts",
-  "style": "./dist/style.css",
+  "style": "./dist/draken-sdk.css",
   "scripts": {
     "dev": "vite",
     "build": "vite build && tsc",
