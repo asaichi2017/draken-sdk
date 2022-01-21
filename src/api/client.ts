@@ -1,5 +1,5 @@
 import axios from 'axios'
-import type { RequestOptions } from 'player'
+import type { RequestOptions } from 'draken-player'
 
 async function getHeader(config: RequestOptions) {
   const header = {
