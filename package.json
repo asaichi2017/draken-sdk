@@ -1,0 +1,37 @@
+{
+  "private": true,
+  "name": "draken-sdk",
+  "version": "0.0.0",
+  "files": [
+    "dist",
+    "src"
+  ],
+  "exports": {
+    ".": {
+      "import": "./dist/draken-sdk.es.js",
+      "require": "./dist/draken-sdk.umd.js"
+    },
+    "./dist/style.css": "./dist/style.css"
+  },
+  "main": "./dist/draken-sdk.umd.js",
+  "module": "./dist/draken-sdk.es.js",
+  "types": "./dist/types/sdk.d.ts",
+  "style": "./dist/style.css",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build && tsc",
+    "preview": "vite preview",
+    "test": "vitest run",
+    "test:watch": "vitest watch",
+    "prepack": "yarn build"
+  },
+  "dependencies": {
+    "axios": "^0.25.0",
+    "player": "0.0.0"
+  },
+  "devDependencies": {
+    "typescript": "^4.4.4",
+    "vite": "^2.7.2",
+    "vitest": "^0.1.19"
+  }
+}
