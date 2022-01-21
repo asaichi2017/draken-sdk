@@ -1,6 +1,6 @@
 import axios from 'axios'
 import drakenPlayer from 'draken-player'
-import 'draken-player/dist/style.css'
+import 'draken-player/dist/draken-player.css'
 import type { PlayerInterface, RequestOptions, PlayOptions } from 'draken-player'
 import { ApiClient } from './api/client'
 import { ContentCreateParams } from './api/content'
