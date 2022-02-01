@@ -4,6 +4,7 @@ import type { PlayerInterface, RequestOptions, PlayOptions } from 'draken-player
 import { ApiClient } from './api/client'
 import { ContentCreateParams } from './api/content'
 import { createContent } from './api/content'
+export { maxUploadFileSize, maxUploadFileSizeLabel, UploadFileSizeTooLargeException } from './api/content'
 
 class Sdk {
   protected config?: RequestOptions
