@@ -1,4 +1,3 @@
-import axios from 'axios'
 import drakenPlayer from 'draken-player'
 import 'draken-player/dist/draken-player.css'
 import type { PlayerInterface, RequestOptions, PlayOptions } from 'draken-player'
@@ -24,16 +23,8 @@ class Sdk {
     onUploadProgress: (progress: { loaded: number; total: number }) => void = () => {},
   ) {
     this.checkConfigured()
-
     const apiClient = new ApiClient(this.config!)
-    const result = await createContent(apiClient, params)
-    const uploadUrl = result.data.signedUrl
-    await axios.put(uploadUrl, contentFile, {
-      onUploadProgress(event) {
-        onUploadProgress({ loaded: event.loaded, total: event.total })
-      },
-    })
-    return result
+    return await createContent(apiClient, params, contentFile, onUploadProgress)
   }
 
   protected checkConfigured() {
