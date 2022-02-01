@@ -26,11 +26,6 @@
   resolved "https://registry.npmjs.org/@types/node/-/node-17.0.10.tgz"
   integrity sha512-S/3xB4KzyFxYGCppyDt68yzBU9ysL88lSdIah4D6cptdcltc4NCPCAMc0+PCpg/lLIyC7IPvj2Z52OJWeIUkog==
 
-"@types/video.js@^7.3.30":
-  version "7.3.30"
-  resolved "https://registry.npmjs.org/@types/video.js/-/video.js-7.3.30.tgz"
-  integrity sha512-wkEn8YaDcPmr26FoVQiGDoZYFk+qsBtktLC0nYK2zQnDFByawZFG6rwog9e/bYd29MF6qDXt7K9hhMb972ldzg==
-
 "@videojs/http-streaming@2.12.0":
   version "2.12.0"
   resolved "https://registry.npmjs.org/@videojs/http-streaming/-/http-streaming-2.12.0.tgz"
@@ -119,10 +114,10 @@ dom-walk@^0.1.0:
   resolved "https://registry.npmjs.org/dom-walk/-/dom-walk-0.1.2.tgz"
   integrity sha512-6QvTW9mrGeIegrFXdtQi9pk7O/nSK6lSdXW2eqUspN5LWD7UTji2Fqw5V2YLjBpHEoU9Xl/eUWNpDeZvoyOv2w==
 
-draken-player@0.1.2:
-  version "0.1.2"
-  resolved "https://registry.yarnpkg.com/draken-player/-/draken-player-0.1.2.tgz#c1d75002f6671412801d5e2bfbdd0190740b0839"
-  integrity sha512-nfoIO/ScvShdg1HiaCrKfSHzGL5zydFSsU2+GRh23QDhXeDDlnoXt4gm9QzyJTW0EUM4C8tZ6m8nn/Py5z3lFA==
+draken-player@0.1.3:
+  version "0.1.3"
+  resolved "https://registry.yarnpkg.com/draken-player/-/draken-player-0.1.3.tgz#ce2fd59a0bf759e784e41af3a741dd7d433f8dca"
+  integrity sha512-tUNwFYGK1hWBYWtgLRBAetnBybrm2q9retIRuE6kC401AElUlghQ7Hbw6w3HLzOmm1IziL4v79GSn4c0FaFTbw==
   dependencies:
     axios "^0.25.0"
     video.js "^7.14.3"
