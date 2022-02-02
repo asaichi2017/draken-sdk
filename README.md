@@ -19,12 +19,8 @@ open http://localhost:3200
 
 ## create content のテスト
 
-!!! 実際に DynamoDB に保存します
-
 ```sh
-vi ./.env.development.local
-# VITE_ENDPOINTとVITE_ADMIN_TOKENを編集する
-sed -i -E "s/^describe\.skip/describe.only/" ./test/createContent.test.ts
-yarn test
-sed -i -E "s/^describe\.only/describe.skip/" ./test/createContent.test.ts
+yarn dev
+open http://localhost:3200/upload.html
+# `./src/upload.ts`を参照
 ```
