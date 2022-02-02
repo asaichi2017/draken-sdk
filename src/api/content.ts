@@ -22,7 +22,7 @@ export class UploadFileSizeTooLargeException extends Error {
 export async function createContent(
   client: ApiClient,
   params: ContentCreateParams,
-  contentFile: File | Buffer,
+  contentFile: File,
   onUploadProgress: (progress: { loaded: number; total: number }) => void = () => {},
 ) {
   if (contentFile instanceof File && contentFile.size > maxUploadFileSize) {
