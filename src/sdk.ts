@@ -20,7 +20,7 @@ class Sdk {
 
   async create(
     params: ContentCreateParams,
-    contentFile: File | Buffer,
+    contentFile: File,
     onUploadProgress: (progress: { loaded: number; total: number }) => void = () => {},
   ) {
     this.checkConfigured()
