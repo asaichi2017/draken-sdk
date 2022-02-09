@@ -16,6 +16,17 @@ draken.configure({
 const form = document.getElementById('form') as HTMLFormElement
 
 form.contentID.value = contentID
+async function init() {
+  const response = await draken.get(contentID)
+  const content = response.data
+  form.contentName.value = content.name
+  form.description.value = content.description ?? ''
+  form.privacy.value = content.privacy
+  form.fromTime.value = content.fromTime
+  form.toTime.value = content.toTime
+}
+init()
+
 form.addEventListener('submit', async e => {
   e.preventDefault()
   const contentID = form.contentID.value

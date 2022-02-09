@@ -90,3 +90,7 @@ export type UpdateCreateParams = {
 export async function update(client: ApiClient, id: string, params: UpdateCreateParams) {
   return await client.patch<any>(`/contents/${id}`, params)
 }
+
+export async function get(client: ApiClient, id: string) {
+  return await client.get<any>(`/contents/${id}`)
+}

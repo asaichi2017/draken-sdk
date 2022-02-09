@@ -16,6 +16,13 @@ async function getHeader(config: RequestOptions) {
 export class ApiClient {
   constructor(protected config: RequestOptions) {}
 
+  async get<T>(path: string): Promise<T> {
+    const response = await axios.get<T>(`${this.config.endpoint}/v1${path}`, {
+      headers: await getHeader(this.config),
+    })
+    return response.data
+  }
+
   async post<T>(path: string, params: Record<string, unknown>): Promise<T> {
     const response = await axios.post<T>(`${this.config.endpoint}/v1${path}`, params, {
       headers: await getHeader(this.config),

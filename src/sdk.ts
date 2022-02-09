@@ -3,7 +3,7 @@ import 'draken-player/dist/draken-player.css'
 import type { PlayerInterface, RequestOptions, PlayOptions } from 'draken-player'
 import { ApiClient } from './api/client'
 import { ContentCreateParams, UpdateCreateParams } from './api/content'
-import { createContent, update as updateContent } from './api/content'
+import { createContent, update as updateContent, get as getContent } from './api/content'
 export { maxUploadFileSize, maxUploadFileSizeLabel, UploadFileSizeTooLargeException } from './api/content'
 
 class Sdk {
@@ -32,6 +32,12 @@ class Sdk {
     this.checkConfigured()
     const apiClient = new ApiClient(this.config!)
     return updateContent(apiClient, id, params)
+  }
+
+  async get(id: string) {
+    this.checkConfigured()
+    const apiClient = new ApiClient(this.config!)
+    return getContent(apiClient, id)
   }
 
   protected checkConfigured() {
