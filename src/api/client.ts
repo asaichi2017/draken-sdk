@@ -22,4 +22,11 @@ export class ApiClient {
     })
     return response.data
   }
+
+  async patch<T>(path: string, params: Record<string, unknown>): Promise<T> {
+    const response = await axios.patch<T>(`${this.config.endpoint}/v1${path}`, params, {
+      headers: await getHeader(this.config),
+    })
+    return response.data
+  }
 }

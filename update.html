@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="favicon.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Vite App</title>
+  </head>
+  <body>
+    <form id="form">
+      <div>content ID<input type="text" name="contentID" required /></div>
+      <div>name<input type="text" name="contentName" required /></div>
+      <div>description<input type="text" name="description" /></div>
+      <div>
+        privacy
+        <select name="privacy">
+          <option value="public">公開</option>
+          <option value="restricted">限定公開</option>
+          <option value="private">非公開</option>
+        </select>
+      </div>
+      <div>fromTime<input type="datetime-local" name="fromTime" /></div>
+      <div>toTime<input type="datetime-local" name="toTime" /></div>
+      <div>
+        <button>送信</button>
+      </div>
+    </form>
+    <script type="module" src="/src/update.ts"></script>
+  </body>
+</html>

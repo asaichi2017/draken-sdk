@@ -78,3 +78,15 @@ async function uploadMultipart(
     }),
   )
 }
+
+export type UpdateCreateParams = {
+  name: string
+  description?: string
+  privacy: string
+  fromTime?: string | null
+  toTime?: string | null
+}
+
+export async function update(client: ApiClient, id: string, params: UpdateCreateParams) {
+  return await client.patch<any>(`/contents/${id}`, params)
+}
