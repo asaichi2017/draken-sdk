@@ -1,0 +1,17 @@
+.App {
+  display: flex;
+  flex-direction: row;
+}
+
+.App__navigation {
+  padding: 1em;
+}
+.App__navigation > a {
+  margin: 0.4em;
+  display: block;
+}
+
+.App__pageContent {
+  padding: 1em;
+  flex: 1 0 auto;
+}

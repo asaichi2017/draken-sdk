@@ -1,0 +1,7 @@
+.Player__form > input[type='text'] {
+  min-width: 36ch;
+}
+.Player__video {
+  max-width: 80vw;
+  max-height: 80vh;
+}
