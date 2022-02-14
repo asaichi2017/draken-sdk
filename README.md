@@ -35,7 +35,7 @@ draken.configure({
   },
 })
 const videoRef = document.getElementById('video')
-const player = draken.player()
+const player = draken.player(videoRef)
 player.load(contentID)
 
 ```
