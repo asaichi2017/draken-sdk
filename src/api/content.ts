@@ -1,11 +1,28 @@
 import axios from 'axios'
 import { ApiClient } from './client'
 
+type ContentQuality = 'low' | 'default' | 'medium' | 'high' | 'highest'
+type ContentPrivacy = 'public' | 'private' | 'restricted'
+
+// enum ContentPrivacy {
+//   PUBLIC = 'public',
+//   PRIVATE = 'private',
+//   RESTRICTED = 'restricted',
+// }
+//
+// enum ContentQuality {
+//   LOW = 'low',
+//   DEFAULT = 'default',
+//   MEDIUM = 'medium',
+//   HIGH = 'high',
+//   HIGHEST = 'highest',
+// }
+
 export type ContentCreateParams = {
   name: string
-  quality: string
+  quality: ContentQuality
   description?: string
-  privacy: string
+  privacy: ContentPrivacy
   fromTime?: string
   toTime?: string
 }
@@ -19,8 +36,8 @@ type CreateMultipartUploadResponse = {
 }
 type ETagMapping = { ETag: string; PartNumber: number }[]
 
-export const maxUploadFileSize = 4 * 1024 * 1024 * 1024
-export const maxUploadFileSizeLabel = '4GB'
+export const maxUploadFileSize = 32 * 1024 * 1024 * 1024
+export const maxUploadFileSizeLabel = '32GB'
 
 export class UploadFileSizeTooLargeException extends Error {
   constructor() {

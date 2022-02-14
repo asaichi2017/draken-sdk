@@ -478,10 +478,10 @@ draken-player@0.1.5:
     video.js "^7.14.3"
     videojs-contrib-quality-levels "^2.1.0"
 
-draken-sdk@^0.3.0:
-  version "0.3.0"
-  resolved "https://registry.yarnpkg.com/draken-sdk/-/draken-sdk-0.3.0.tgz#a984a5960905ea5ee4f9e97ca2979878db0a7123"
-  integrity sha512-SpP/AEYLicp5wFXipX+aGzCLG7ylly6KOQaQiGWw1VVJpVFOrqrJjE95J1UBKPJjxzsBFPmqhZqQHquDGtTCew==
+draken-sdk@^0.3.1:
+  version "0.3.1"
+  resolved "https://registry.yarnpkg.com/draken-sdk/-/draken-sdk-0.3.1.tgz#54fee8d16294ca4138c2cfc90f41ce502d8be504"
+  integrity sha512-Px7d3d3L/c4a39QvU7CuS+5TI4DQcqn8hPE+dUvNpuGf0Gn/YrkNIgI8J5AV+nQ1HhFl7NxQ/Ql/I89TtP87UQ==
   dependencies:
     "@types/node" "^17.0.10"
     axios "^0.25.0"

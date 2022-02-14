@@ -16,7 +16,11 @@ const form = document.getElementById('form') as HTMLFormElement
 form.addEventListener('submit', async e => {
   e.preventDefault()
   const file = form.file.files[0]
-  await draken.create({ name: form.contentName.value, quality: 'default', privacy: 'private' }, file, p => {
+  await draken.create({
+    name: form.contentName.value,
+    quality: 'default',
+    privacy: 'private'
+  }, file, p => {
     console.log(p)
   })
   alert('アップロード完了しました')
