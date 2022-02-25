@@ -126,10 +126,10 @@ dom-walk@^0.1.0:
   resolved "https://registry.npmjs.org/dom-walk/-/dom-walk-0.1.2.tgz"
   integrity sha512-6QvTW9mrGeIegrFXdtQi9pk7O/nSK6lSdXW2eqUspN5LWD7UTji2Fqw5V2YLjBpHEoU9Xl/eUWNpDeZvoyOv2w==
 
-draken-player@0.2.0:
-  version "0.2.0"
-  resolved "https://registry.yarnpkg.com/draken-player/-/draken-player-0.2.0.tgz#0ab9d942de09294c1e2791f29daf8656cf140dbb"
-  integrity sha512-Q+b+lNnipPZbODFoyKiDEQQdSugCEzn9szJGGPM564kjarTdb8IkbT3dXUhV6DpQkrKF0ZoKK3nnuy9pPK5c4A==
+draken-player@0.2.1:
+  version "0.2.1"
+  resolved "https://registry.yarnpkg.com/draken-player/-/draken-player-0.2.1.tgz#4bc7f3b871bdee0c198cbe186d1848a001599842"
+  integrity sha512-BhgBBBW9/kg1I/jLzWKdlVF+VXMrVVTJymnuxsCre1nbi/VCjKnz2Kv02RBmjgoDAdLBJV1/g81Gzn6OZ2PWYQ==
   dependencies:
     "@types/video.js" "^7.3.26"
     "@types/videojs-contrib-quality-levels" "^2.0.1"
