@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="favicon.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Vite App</title>
+  </head>
+  <body>
+    <a href="./upload.html">アップロード</a>
+    <div>
+      下のcontent idなどが空の場合 先にアップロードを実行して、アップロード途中でリロードするなどして中断してください
+    </div>
+    <form id="form">
+      <div>content id<input type="text" name="contentId" disabled /></div>
+      <div>file name<input type="text" name="fileName" disabled /></div>
+      <div>file size<input type="text" name="fileSize" disabled /></div>
+      <div>中断された時と同じファイルを選択してから再開ボタンをクリックしてください</div>
+      <div>
+        <input type="file" name="file" id="" />
+      </div>
+      <div>
+        <button>再開</button>
+      </div>
+    </form>
+    <script type="module" src="/src/resume.ts"></script>
+  </body>
+</html>

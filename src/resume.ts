@@ -12,18 +12,25 @@ draken.configure({
   ...(adminToken ? { adminToken: () => String(adminToken) } : {}),
 })
 
+const resumeInfo = JSON.parse(localStorage.getItem('upload') ?? 'null')
+
 const form = document.getElementById('form') as HTMLFormElement
+
+form.contentId.value = resumeInfo?.progressInfo.contentId
+form.fileName.value = resumeInfo?.file.name
+form.fileSize.value = resumeInfo?.file.size
+
 form.addEventListener('submit', async e => {
   e.preventDefault()
   const file = form.file.files[0]
-  await draken.create(
-    { name: form.contentName.value, quality: 'default', privacy: 'private' },
+  await draken.resumeUpload(
     file,
+    resumeInfo.progressInfo,
     p => {
       console.info(p)
     },
-    progressInfo => {
-      console.info(progressInfo)
+    info => {
+      console.info(info)
       localStorage.setItem(
         'upload',
         JSON.stringify({
@@ -31,7 +38,7 @@ form.addEventListener('submit', async e => {
             name: file.name,
             size: file.size,
           },
-          progressInfo,
+          info,
         }),
       )
     },
