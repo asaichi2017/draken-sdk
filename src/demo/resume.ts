@@ -1,24 +1,15 @@
 import draken from '../sdk'
+import { config } from './env'
 
-const endpoint = import.meta.env.VITE_ENDPOINT
-const apiKey = import.meta.env.VITE_API_KEY
-const idToken = import.meta.env.VITE_ID_TOKEN
-const adminToken = import.meta.env.VITE_ADMIN_TOKEN
-
-draken.configure({
-  ...{ endpoint: String(endpoint) },
-  ...(apiKey ? { apiKey: String(apiKey) } : {}),
-  ...(idToken ? { idToken: () => String(idToken) } : {}),
-  ...(adminToken ? { adminToken: () => String(adminToken) } : {}),
-})
+draken.configure(config)
 
 const resumeInfo = JSON.parse(localStorage.getItem('upload') ?? 'null')
 
 const form = document.getElementById('form') as HTMLFormElement
 
-form.contentId.value = resumeInfo?.progressInfo.contentId
-form.fileName.value = resumeInfo?.file.name
-form.fileSize.value = resumeInfo?.file.size
+form.contentId.value = resumeInfo?.progressInfo.contentId ?? ''
+form.fileName.value = resumeInfo?.file.name ?? ''
+form.fileSize.value = resumeInfo?.file.size ?? ''
 
 form.addEventListener('submit', async e => {
   e.preventDefault()
