@@ -1,4 +1,4 @@
-import draken from './sdk'
+import draken from '../sdk'
 
 const contentID = String(import.meta.env.VITE_CONTENT_ID ?? '')
 const endpoint = import.meta.env.VITE_ENDPOINT

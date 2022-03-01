@@ -1,4 +1,4 @@
-import draken from './sdk'
+import draken from '../sdk'
 
 const endpoint = import.meta.env.VITE_ENDPOINT
 const apiKey = import.meta.env.VITE_API_KEY
