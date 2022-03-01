@@ -2,10 +2,10 @@ import drakenPlayer from 'draken-player'
 import 'draken-player/dist/draken-player.css'
 import type { PlayerInterface, RequestOptions, PlayOptions } from 'draken-player'
 import { ApiClient } from './api/client'
-import type { ContentCreateParams, UpdateCreateParams, ProgressInfo } from './api/content'
+import type { ContentCreateParams, UpdateCreateParams, MultiPartUploadProgressInfo } from './api/content'
 import { createContent, resumeUpload, update as updateContent, get as getContent } from './api/content'
 export { maxUploadFileSize, maxUploadFileSizeLabel, UploadFileSizeTooLargeException } from './api/content'
-export type { ProgressInfo } from './api/content'
+export type { MultiPartUploadProgressInfo } from './api/content'
 
 class Sdk {
   protected config?: RequestOptions
@@ -23,22 +23,22 @@ class Sdk {
     params: ContentCreateParams,
     contentFile: File,
     onUploadProgress: (progress: { loaded: number; total: number }) => void = () => {},
-    onProgress: (progressInfo: ProgressInfo) => void = () => {},
+    onMultiPartUploadProgress: (progressInfo: MultiPartUploadProgressInfo) => void = () => {},
   ) {
     this.checkConfigured()
     const apiClient = new ApiClient(this.config!)
-    return await createContent(apiClient, params, contentFile, onUploadProgress, onProgress)
+    return await createContent(apiClient, params, contentFile, onUploadProgress, onMultiPartUploadProgress)
   }
 
   async resumeUpload(
     contentFile: File,
-    progressInfo: ProgressInfo,
+    progressInfo: MultiPartUploadProgressInfo,
     onUploadProgress: (progress: { loaded: number; total: number }) => void = () => {},
-    onProgress: (progressInfo: ProgressInfo) => void = () => {},
+    onMultiPartUploadProgress: (progressInfo: MultiPartUploadProgressInfo) => void = () => {},
   ) {
     this.checkConfigured()
     const apiClient = new ApiClient(this.config!)
-    return await resumeUpload(apiClient, contentFile, progressInfo, onUploadProgress, onProgress)
+    return await resumeUpload(apiClient, contentFile, progressInfo, onUploadProgress, onMultiPartUploadProgress)
   }
 
   async update(id: string, params: UpdateCreateParams) {

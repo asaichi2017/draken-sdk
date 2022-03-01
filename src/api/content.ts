@@ -37,7 +37,7 @@ type CreateMultipartUploadResponse = {
 type ETagInfo = { ETag: string; PartNumber: number }
 type ETagMapping = ETagInfo[]
 
-export type ProgressInfo = {
+export type MultiPartUploadProgressInfo = {
   eTagMapping: ETagMapping
   urls: SignedUrlInfo[]
   contentId: string
@@ -59,7 +59,7 @@ export async function createContent(
   params: ContentCreateParams,
   contentFile: File,
   onUploadProgress: (progress: { loaded: number; total: number }) => void = () => {},
-  onProgress: (progressInfo: ProgressInfo) => void = () => {},
+  onMultiPartUploadProgress: (progressInfo: MultiPartUploadProgressInfo) => void = () => {},
 ) {
   const result = await client.post<any>('/contents', { ...params, encryption: false })
   const contentId = result.data.id
@@ -72,7 +72,7 @@ export async function createContent(
       contentFile,
       { eTagMapping: [], urls, contentId, uploadId, chunkSize },
       onUploadProgress,
-      onProgress,
+      onMultiPartUploadProgress,
     )
 
     await client.post(`/contents/${contentId}/completeMultipartUpload`, {
@@ -93,11 +93,11 @@ export async function createContent(
 export async function resumeUpload(
   client: ApiClient,
   contentFile: File,
-  progressInfo: ProgressInfo,
+  progressInfo: MultiPartUploadProgressInfo,
   onUploadProgress: (progress: { loaded: number; total: number }) => void = () => {},
-  onProgress: (progressInfo: ProgressInfo) => void = () => {},
+  onMultiPartUploadProgress: (progressInfo: MultiPartUploadProgressInfo) => void = () => {},
 ) {
-  const eTagMapping = await uploadMultipart(contentFile, progressInfo, onUploadProgress, onProgress)
+  const eTagMapping = await uploadMultipart(contentFile, progressInfo, onUploadProgress, onMultiPartUploadProgress)
   const contentId = progressInfo.contentId
   const uploadId = progressInfo.uploadId
   await client.post(`/contents/${contentId}/completeMultipartUpload`, {
@@ -108,9 +108,9 @@ export async function resumeUpload(
 
 async function uploadMultipart(
   file: File,
-  progressInfo: ProgressInfo,
+  progressInfo: MultiPartUploadProgressInfo,
   onUploadProgress: (progress: { loaded: number; total: number }) => void,
-  onProgress: (progressInfo: ProgressInfo) => void,
+  onMultiPartUploadProgress: (progressInfo: MultiPartUploadProgressInfo) => void,
 ): Promise<ETagMapping> {
   const chunkSize = progressInfo.chunkSize
   let uploadedSize = progressInfo.eTagMapping.length * chunkSize
@@ -119,7 +119,7 @@ async function uploadMultipart(
     uploadedSize += (file.size % chunkSize) - chunkSize
   }
   onUploadProgress({ loaded: uploadedSize, total: file.size })
-  onProgress(progressInfo)
+  onMultiPartUploadProgress(progressInfo)
   const urls = [...progressInfo.urls]
   await Promise.all(
     urls.map(async ({ url, PartNumber }) => {
@@ -135,7 +135,7 @@ async function uploadMultipart(
         1,
       )
       progressInfo.eTagMapping.push({ ETag, PartNumber })
-      onProgress(progressInfo)
+      onMultiPartUploadProgress(progressInfo)
     }),
   )
   return progressInfo.eTagMapping
