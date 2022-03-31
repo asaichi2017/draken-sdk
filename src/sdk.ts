@@ -2,7 +2,7 @@ import drakenPlayer from 'draken-player'
 import 'draken-player/dist/draken-player.css'
 import type { PlayerInterface, RequestOptions, PlayOptions } from 'draken-player'
 import { ApiClient } from './api/client'
-import type { ContentCreateParams, UpdateCreateParams, MultiPartUploadProgressInfo } from './api/content'
+import type { ContentCreateParams, ContentUpdateParams, MultiPartUploadProgressInfo } from './api/content'
 import { createContent, resumeUpload, update as updateContent, get as getContent } from './api/content'
 export { maxUploadFileSize, maxUploadFileSizeLabel, UploadFileSizeTooLargeException } from './api/content'
 export type { MultiPartUploadProgressInfo } from './api/content'
@@ -41,7 +41,7 @@ class Sdk {
     return await resumeUpload(apiClient, contentFile, progressInfo, onUploadProgress, onMultiPartUploadProgress)
   }
 
-  async update(id: string, params: UpdateCreateParams) {
+  async update(id: string, params: ContentUpdateParams) {
     this.checkConfigured()
     const apiClient = new ApiClient(this.config!)
     return updateContent(apiClient, id, params)

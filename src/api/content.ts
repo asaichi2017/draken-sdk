@@ -141,15 +141,16 @@ async function uploadMultipart(
   return progressInfo.eTagMapping
 }
 
-export type UpdateCreateParams = {
-  name: string
+export type ContentUpdateParams = {
+  name?: string
   description?: string
-  privacy: string
+  privacy?: string
   fromTime?: string | null
   toTime?: string | null
+  posterFile?: string
 }
 
-export async function update(client: ApiClient, id: string, params: UpdateCreateParams) {
+export async function update(client: ApiClient, id: string, params: ContentUpdateParams) {
   return await client.patch<any>(`/contents/${id}`, params)
 }
 
