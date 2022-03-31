@@ -2,8 +2,13 @@ import drakenPlayer from 'draken-player'
 import 'draken-player/dist/draken-player.css'
 import type { PlayerInterface, RequestOptions, PlayOptions } from 'draken-player'
 import { ApiClient } from './api/client'
-import type { ContentCreateParams, ContentUpdateParams, MultiPartUploadProgressInfo } from './api/content'
-import { createContent, resumeUpload, update as updateContent, get as getContent } from './api/content'
+import type {
+  ContentCreateParams,
+  ContentReUploadParams,
+  ContentUpdateParams,
+  MultiPartUploadProgressInfo,
+} from './api/content'
+import { createContent, reUploadContent, resumeUpload, update as updateContent, get as getContent } from './api/content'
 export { maxUploadFileSize, maxUploadFileSizeLabel, UploadFileSizeTooLargeException } from './api/content'
 export type { MultiPartUploadProgressInfo } from './api/content'
 
@@ -28,6 +33,18 @@ class Sdk {
     this.checkConfigured()
     const apiClient = new ApiClient(this.config!)
     return await createContent(apiClient, params, contentFile, onUploadProgress, onMultiPartUploadProgress)
+  }
+
+  async reUpload(
+    contentId: string,
+    params: ContentReUploadParams,
+    contentFile: File,
+    onUploadProgress: (progress: { loaded: number; total: number }) => void = () => {},
+    onMultiPartUploadProgress: (progressInfo: MultiPartUploadProgressInfo) => void = () => {},
+  ) {
+    this.checkConfigured()
+    const apiClient = new ApiClient(this.config!)
+    return await reUploadContent(apiClient, contentId, params, contentFile, onUploadProgress, onMultiPartUploadProgress)
   }
 
   async resumeUpload(

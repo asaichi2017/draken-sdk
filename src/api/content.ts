@@ -54,15 +54,13 @@ export class UploadFileSizeTooLargeException extends Error {
   }
 }
 
-export async function createContent(
+async function uploadFile(
   client: ApiClient,
-  params: ContentCreateParams,
+  contentId: string,
   contentFile: File,
   onUploadProgress: (progress: { loaded: number; total: number }) => void = () => {},
   onMultiPartUploadProgress: (progressInfo: MultiPartUploadProgressInfo) => void = () => {},
 ) {
-  const result = await client.post<any>('/contents', { ...params, encryption: false })
-  const contentId = result.data.id
   const { uploadId, urls, chunkSize } = await client.post<CreateMultipartUploadResponse>(
     `/contents/${contentId}/createMultipartUpload`,
     { fileSize: contentFile.size },
@@ -87,6 +85,35 @@ export async function createContent(
       },
     })
   }
+}
+
+export async function createContent(
+  client: ApiClient,
+  params: ContentCreateParams,
+  contentFile: File,
+  onUploadProgress: (progress: { loaded: number; total: number }) => void = () => {},
+  onMultiPartUploadProgress: (progressInfo: MultiPartUploadProgressInfo) => void = () => {},
+) {
+  const result = await client.post<any>('/contents', { ...params, encryption: false })
+  const contentId = result.data.id
+  await uploadFile(client, contentId, contentFile, onUploadProgress, onMultiPartUploadProgress)
+  return result
+}
+
+export type ContentReUploadParams = {
+  quality: string
+  originalFileName?: string
+}
+export async function reUploadContent(
+  client: ApiClient,
+  contentId: string,
+  params: ContentReUploadParams,
+  contentFile: File,
+  onUploadProgress: (progress: { loaded: number; total: number }) => void = () => {},
+  onMultiPartUploadProgress: (progressInfo: MultiPartUploadProgressInfo) => void = () => {},
+) {
+  const result = await client.post(`/contents/${contentId}/reUpload`, params)
+  await uploadFile(client, contentId, contentFile, onUploadProgress, onMultiPartUploadProgress)
   return result
 }
 
