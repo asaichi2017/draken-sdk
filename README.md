@@ -197,6 +197,19 @@ draken.configure({
 const url = await draken.downloadVideo(contentId)
 ```
 
+### Upload Thumbnail
+
+```typescript
+import draken from 'draken-sdk'
+draken.configure({
+  endpoint: 'https://draken.example.com/xxxxxx', // 管理画面から取得したREST API Endpoint URL,
+  idToken: () => {
+    // 管理画面で登録した連携しているIDプロバイダーのid tokenを返す(required)
+  },
+})
+await draken.uploadThumbnail(contentId, file)
+```
+
 ## Author
 
 👤 **Asaichi, LLC. <taichi@asaichi.co.jp> (https://asaichi.co.jp/)**

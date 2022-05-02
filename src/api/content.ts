@@ -193,3 +193,9 @@ export async function downloadVideo(client: ApiClient, id: string): Promise<URL>
   const response = await client.get<{ url: string }>(`/contents/${id}/download`)
   return new URL(response.url)
 }
+
+export async function uploadThumbnail(client: ApiClient, id: string, file: File) {
+  const { url, posterId } = await client.get(`/contents/${id}/poster`)
+  await axios.put(url, file)
+  await update(client, id, { posterFile: posterId })
+}
