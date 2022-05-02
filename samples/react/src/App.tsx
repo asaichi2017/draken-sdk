@@ -16,6 +16,7 @@ function App() {
             <Link to="/">ログイン</Link>
             <Link to="/player">Player</Link>
             <Link to="/upload">Upload</Link>
+            <Link to="/reUpload">ReUpload</Link>
             <Link to="/update">Update</Link>
             <Link to="/get">Get</Link>
           </nav>
