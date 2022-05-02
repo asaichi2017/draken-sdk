@@ -24,7 +24,13 @@ function Player() {
 
   const load = useCallback(contentID => {
     if (!videoRef.current) return
-    playerRef.current = draken.player(videoRef.current)
+    playerRef.current = draken.player(videoRef.current, {
+      // enablePlaybackRates: false,
+      // enablePlaybackResume: false,
+      // layout: 'fill',
+      // bigPlayButton: false,
+      // controlBar: false,
+    })
     playerRef.current.load(contentID)
   }, [])
 
