@@ -35,7 +35,21 @@ draken.configure({
   },
 })
 const videoRef = document.getElementById('video')
-const player = draken.player(videoRef)
+const player = draken.player(videoRef, {
+  // 再生速度変更ボタンを非表示にする
+  enablePlaybackRates: false,
+  // 動画の再生再開機能を無効にする
+  enablePlaybackResume: false,
+  // <video> DOMのサイズの指定
+  // 'fill': 親DOMのサイズに合わせる
+  // 'fluid': 親DOMの横幅とvideoの横幅を合わせる
+  // 'none': 指定なし(自分でカスタマイズする場合)
+  layout: 'fill',
+  // 動画ロード後の中央の再生ボタンを非表示にする
+  bigPlayButton: false,
+  // 動画下部のコントロール類を全て非表示にする
+  controlBar: false,
+})
 player.load(contentID)
 
 ```
