@@ -6,6 +6,7 @@ import ReUpload from './pages/ReUpload'
 import ResumeUpload from './pages/ResumeUpload'
 import Update from './pages/Update'
 import Get from './pages/Get'
+import Delete from './pages/Delete'
 
 function Router() {
   return (
@@ -17,6 +18,7 @@ function Router() {
       <Route path="/resumeUpload" element={<ResumeUpload />} />
       <Route path="/update" element={<Update />} />
       <Route path="/get" element={<Get />} />
+      <Route path="/delete" element={<Delete />} />
     </Routes>
   )
 }

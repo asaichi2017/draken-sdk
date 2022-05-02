@@ -20,6 +20,7 @@ function App() {
             <Link to="/resumeUpload">Resume Upload</Link>
             <Link to="/update">Update</Link>
             <Link to="/get">Get</Link>
+            <Link to="/delete">Delete</Link>
           </nav>
           <div className="App__pageContent">
             <Router />
