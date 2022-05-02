@@ -21,6 +21,7 @@ function App() {
             <Link to="/update">Update</Link>
             <Link to="/get">Get</Link>
             <Link to="/delete">Delete</Link>
+            <Link to="/downloadVideo">Download Video</Link>
           </nav>
           <div className="App__pageContent">
             <Router />
