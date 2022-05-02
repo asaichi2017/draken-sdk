@@ -110,6 +110,31 @@ const result = await draken.resumeUpload(
 )
 ```
 
+### ReUpload
+
+```typescript
+import draken from 'draken-sdk'
+draken.configure({
+  endpoint: 'https://draken.example.com/xxxxxx', // 管理画面から取得したREST API Endpoint URL,
+  idToken: () => {
+    // 管理画面で登録した連携しているIDプロバイダーのid tokenを返す(required)
+  },
+})
+const result = await draken.resumeUpload(
+  contentId,
+  {
+    quality: 'default',
+    originalFileName: 'video_file_name.mp4',
+  },
+  file,
+  ({ loaded, total }) => {
+    // progress
+  },
+  (progressInfo) => {
+    // createと同様
+  }
+)
+```
 
 ## Author
 
