@@ -158,6 +158,19 @@ const result = await draken.update(
 )
 ```
 
+### Get Content
+
+```typescript
+import draken from 'draken-sdk'
+draken.configure({
+  endpoint: 'https://draken.example.com/xxxxxx', // 管理画面から取得したREST API Endpoint URL,
+  idToken: () => {
+    // 管理画面で登録した連携しているIDプロバイダーのid tokenを返す(required)
+  },
+})
+const content = await draken.get(contentId)
+```
+
 ## Author
 
 👤 **Asaichi, LLC. <taichi@asaichi.co.jp> (https://asaichi.co.jp/)**
