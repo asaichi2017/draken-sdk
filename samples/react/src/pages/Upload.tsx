@@ -1,4 +1,4 @@
-import {useCallback, useEffect, useRef, useState} from 'react'
+import { useCallback, useEffect, useRef, useState } from 'react'
 import { useAuth0 } from '@auth0/auth0-react'
 import draken from 'draken-sdk'
 import './Upload.css'
@@ -44,7 +44,20 @@ function Upload() {
         ({ loaded, total }) => {
           setUploadProgress(total === 0 ? 0 : loaded / total)
         },
+        progressInfo => {
+          localStorage.setItem(
+            'uploadProgressInfo',
+            JSON.stringify({
+              fileInfo: {
+                name: file.name,
+                size: file.size,
+              },
+              progressInfo,
+            }),
+          )
+        },
       )
+      localStorage.removeItem('uploadProgressInfo')
       console.info(result)
       alert('アップロードが完了しました')
       setFormData(initialFormData)

@@ -17,6 +17,7 @@ function App() {
             <Link to="/player">Player</Link>
             <Link to="/upload">Upload</Link>
             <Link to="/reUpload">ReUpload</Link>
+            <Link to="/resumeUpload">Resume Upload</Link>
             <Link to="/update">Update</Link>
             <Link to="/get">Get</Link>
           </nav>

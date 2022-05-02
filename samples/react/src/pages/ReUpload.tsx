@@ -42,7 +42,20 @@ function ReUpload() {
         ({ loaded, total }) => {
           setUploadProgress(total === 0 ? 0 : loaded / total)
         },
+        progressInfo => {
+          localStorage.setItem(
+            'uploadProgressInfo',
+            JSON.stringify({
+              fileInfo: {
+                name: file.name,
+                size: file.size,
+              },
+              progressInfo,
+            }),
+          )
+        },
       )
+      localStorage.removeItem('uploadProgressInfo')
       console.info(result)
       alert('アップロードが完了しました')
       setFormData(initialFormData)
