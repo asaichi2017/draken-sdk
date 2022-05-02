@@ -136,6 +136,28 @@ const result = await draken.resumeUpload(
 )
 ```
 
+### Update Content
+
+```typescript
+import draken from 'draken-sdk'
+draken.configure({
+  endpoint: 'https://draken.example.com/xxxxxx', // 管理画面から取得したREST API Endpoint URL,
+  idToken: () => {
+    // 管理画面で登録した連携しているIDプロバイダーのid tokenを返す(required)
+  },
+})
+const result = await draken.update(
+  contentId,
+  {
+    name: 'Content Name',
+    description: 'Content Description',
+    privacy: 'public',
+    fromTime: '2000-01-01T00:00:00.000Z',
+    toTime: '2000-01-02T00:00:00.000Z',
+  }
+)
+```
+
 ## Author
 
 👤 **Asaichi, LLC. <taichi@asaichi.co.jp> (https://asaichi.co.jp/)**
