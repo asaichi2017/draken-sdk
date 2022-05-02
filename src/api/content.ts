@@ -184,3 +184,7 @@ export async function update(client: ApiClient, id: string, params: ContentUpdat
 export async function get(client: ApiClient, id: string) {
   return await client.get<any>(`/contents/${id}`)
 }
+
+export async function deleteContent(client: ApiClient, id: string) {
+  return await client.delete(`/contents/${id}`)
+}

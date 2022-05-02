@@ -36,4 +36,11 @@ export class ApiClient {
     })
     return response.data
   }
+
+  async delete<T>(path: string): Promise<T> {
+    const response = await axios.delete<T>(`${this.config.endpoint}/v1${path}`, {
+      headers: await getHeader(this.config),
+    })
+    return response.data
+  }
 }

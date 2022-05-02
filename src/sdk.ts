@@ -8,7 +8,14 @@ import type {
   ContentUpdateParams,
   MultiPartUploadProgressInfo,
 } from './api/content'
-import { createContent, reUploadContent, resumeUpload, update as updateContent, get as getContent } from './api/content'
+import {
+  createContent,
+  reUploadContent,
+  resumeUpload,
+  update as updateContent,
+  get as getContent,
+  deleteContent,
+} from './api/content'
 export { maxUploadFileSize, maxUploadFileSizeLabel, UploadFileSizeTooLargeException } from './api/content'
 export type { MultiPartUploadProgressInfo } from './api/content'
 
@@ -68,6 +75,12 @@ class Sdk {
     this.checkConfigured()
     const apiClient = new ApiClient(this.config!)
     return getContent(apiClient, id)
+  }
+
+  async delete(id: string) {
+    this.checkConfigured()
+    const apiClient = new ApiClient(this.config!)
+    return deleteContent(apiClient, id)
   }
 
   protected checkConfigured() {
