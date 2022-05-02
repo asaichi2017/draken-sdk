@@ -88,6 +88,28 @@ const result = await draken.create(
 
 ```
 
+### Resume Upload
+
+```typescript
+import draken from 'draken-sdk'
+draken.configure({
+  endpoint: 'https://draken.example.com/xxxxxx', // 管理画面から取得したREST API Endpoint URL,
+  idToken: () => {
+    // 管理画面で登録した連携しているIDプロバイダーのid tokenを返す(required)
+  },
+})
+const result = await draken.resumeUpload(
+  file,
+  progressInfo, // createやresumeUploadを実行した際に保存しておいた`progressInfo`を指定する
+  ({ loaded, total }) => {
+    // progress
+  },
+  (progressInfo) => {
+    // createと同様
+  }
+)
+```
+
 
 ## Author
 
