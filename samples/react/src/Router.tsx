@@ -8,6 +8,7 @@ import Update from './pages/Update'
 import Get from './pages/Get'
 import Delete from './pages/Delete'
 import DownloadVideo from './pages/DownloadVideo'
+import UploadThumbnail from './pages/UploadThumbnail'
 
 function Router() {
   return (
@@ -21,6 +22,7 @@ function Router() {
       <Route path="/get" element={<Get />} />
       <Route path="/delete" element={<Delete />} />
       <Route path="/downloadVideo" element={<DownloadVideo />} />
+      <Route path="/uploadThumbnail" element={<UploadThumbnail />} />
     </Routes>
   )
 }

@@ -22,6 +22,7 @@ function App() {
             <Link to="/get">Get</Link>
             <Link to="/delete">Delete</Link>
             <Link to="/downloadVideo">Download Video</Link>
+            <Link to="/uploadThumbnail">Upload Thumbnail</Link>
           </nav>
           <div className="App__pageContent">
             <Router />
