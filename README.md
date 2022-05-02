@@ -80,6 +80,10 @@ const result = await draken.create(
   ({ loaded, total }) => {
     // progress
   },
+  (progressInfo) => {
+    // progressInfoをlocalStorageなどに保存しておくことでアップロードが中断されても再開できる
+    // 詳細はresumeUploadを参照
+  }
 )
 
 ```
