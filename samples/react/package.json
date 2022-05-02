@@ -8,7 +8,7 @@
   },
   "dependencies": {
     "@auth0/auth0-react": "^1.9.0",
-    "draken-sdk": "^0.3.3",
+    "draken-sdk": "*",
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
     "react-router-dom": "6"
