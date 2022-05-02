@@ -15,6 +15,7 @@ import {
   update as updateContent,
   get as getContent,
   deleteContent,
+  downloadVideo,
 } from './api/content'
 export { maxUploadFileSize, maxUploadFileSizeLabel, UploadFileSizeTooLargeException } from './api/content'
 export type { MultiPartUploadProgressInfo } from './api/content'
@@ -81,6 +82,12 @@ class Sdk {
     this.checkConfigured()
     const apiClient = new ApiClient(this.config!)
     return deleteContent(apiClient, id)
+  }
+
+  async downloadVideo(id: string): Promise<URL> {
+    this.checkConfigured()
+    const apiClient = new ApiClient(this.config!)
+    return downloadVideo(apiClient, id)
   }
 
   protected checkConfigured() {

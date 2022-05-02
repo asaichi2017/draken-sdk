@@ -188,3 +188,8 @@ export async function get(client: ApiClient, id: string) {
 export async function deleteContent(client: ApiClient, id: string) {
   return await client.delete(`/contents/${id}`)
 }
+
+export async function downloadVideo(client: ApiClient, id: string): Promise<URL> {
+  const response = await client.get<{ url: string }>(`/contents/${id}/download`)
+  return new URL(response.url)
+}
