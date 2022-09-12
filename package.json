@@ -1,6 +1,6 @@
 {
   "name": "draken-sdk",
-  "version": "0.4.4",
+  "version": "0.4.5",
   "description": "Draken SDK",
   "author": "Asaichi, LLC. <taichi@asaichi.co.jp> (https://asaichi.co.jp/)",
   "license": "Apache-2.0",
@@ -39,7 +39,7 @@
   "dependencies": {
     "@types/node": "^17.0.10",
     "axios": "^0.25.0",
-    "draken-player": "0.4.0"
+    "draken-player": "0.4.1"
   },
   "devDependencies": {
     "typescript": "^4.4.4",
